@@ -1,0 +1,28 @@
+﻿<p>
+    Greetings @(Context.User.Identity.Name)!
+</p>
+
+<div id="todo-list">
+    <form data-bind="submit: createTodo">
+        <input type="text" placeholder="Create todo..." data-bind="value: todoContent" />
+    </form>
+    
+    <ul data-bind="foreach: todos, visible: todos().length > 0">
+        <li>
+            <label>
+                <input type="checkbox" />
+                <span data-bind="text: content"></span>
+            </label>
+        </li>
+    </ul>
+</div>
+
+<script>
+    // <![CDATA[
+
+    require(['jquery', 'ko', 'app/todoListViewModel'], function($, ko, todoListViewModel) {
+        ko.applyBindings(new todoListViewModel(), document.getElementById('todo-list'));
+    });
+
+    // ]]>
+</script>
