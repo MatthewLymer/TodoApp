@@ -39,7 +39,7 @@ namespace TodoApp.Web
 
         public override bool ValidateUser(string username, string password)
         {
-            return username.Equals("smcqueen", StringComparison.OrdinalIgnoreCase) &&
+            return username.Equals("smcqueen@domain.com", StringComparison.OrdinalIgnoreCase) &&
                    password.Equals("qwerty", StringComparison.OrdinalIgnoreCase);
         }
 

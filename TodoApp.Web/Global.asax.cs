@@ -10,15 +10,6 @@ namespace TodoApp.Web
     {
         protected void Application_Start()
         {
-            //using (var sessionFactory = new MsSqlSessionFactory(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\TodoApp.mdf;Integrated Security=True"))
-            //{
-            //    using (var session = sessionFactory.Create())
-            //    {
-            //        var todos = session.Query<Todo>().Where(x => x.Content.Contains("cat"));
-            //        todos.ToList();
-            //    }
-            //}
-
             ConfigureWebApi();
             ConfigureMvcRoutes(RouteTable.Routes);
         }

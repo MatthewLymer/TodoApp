@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Entities\Todo.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Persistence\IConnectionStringProvider.cs" />
     <Compile Include="Persistence\Mapping\TodoMapping.cs" />
     <Compile Include="Persistence\Mapping\UserMapping.cs" />
     <Compile Include="Persistence\MsSqlSessionFactory.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace TodoApp.Core.Entities
 {
@@ -24,7 +25,17 @@ namespace TodoApp.Core.Entities
             get { return _id; }
         }
 
-        public virtual void AddTodo(string content)
+        public virtual string Email
+        {
+            get; protected set;
+        }
+
+        public virtual IReadOnlyCollection<Todo> Todos
+        {
+            get { return new ReadOnlyCollection<Todo>(_todos); }
+        }
+
+        public virtual Todo CreateTodo(string content)
         {
             var todo = new Todo(Guid.NewGuid()) 
             {
@@ -32,6 +43,8 @@ namespace TodoApp.Core.Entities
             };
 
             _todos.Add(todo);
+
+            return todo;
         }
     }
 }

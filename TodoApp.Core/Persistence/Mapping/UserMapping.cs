@@ -15,11 +15,17 @@ namespace TodoApp.Core.Persistence.Mapping
                 m.Access(Accessor.Field);
             });
 
-            Bag<Todo>("_todos", m =>
+            Property(x => x.Email, m => m.Column("Email"));
+
+            Bag(x => x.Todos, m =>
             {
                 m.Access(Accessor.Field);
                 m.Cascade(Cascade.All);
-                m.Key(k => k.Column("UserId"));
+                m.Key(k => {
+                    k.Column("UserId");
+                    k.NotNullable(true);
+                    k.Update(false);
+                });
             }, r => r.OneToMany());
         }
     }

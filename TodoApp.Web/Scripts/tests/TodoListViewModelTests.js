@@ -31,6 +31,34 @@ describe('TodoList View Model', function () {
 
         expect(sut.todos()[0].content).toBe(content);
     });
+    
+    it('should persist created todo to model', function(done) {
+        var content = "Mow the lawn";
+        var posted = false;
+
+        var predicate = function(controller, data) {
+            var matches = controller == "Todos" && data.content == content;
+
+            if (matches) {
+                posted = true;
+            }
+            
+            return matches;
+        };
+
+        mockApiClient.setupPost(predicate, null);
+
+        var sut = new todoListViewModel();
+
+        sut.todoContent(content);
+
+        sut.createTodo();
+
+        setTimeout(function () {
+            expect(posted).toBe(true);
+            done();
+        });
+    });
 
     it('should clear create todo text after adding todo', function() {
         var sut = new todoListViewModel();

@@ -12,14 +12,18 @@ namespace TodoApp.Core.Persistence
     {
         private readonly ISessionFactory _sessionFactory;
 
-        public MsSqlSessionFactory(string connectionString)
+        public MsSqlSessionFactory(IConnectionStringProvider connectionStringProvider)
         {
-            _sessionFactory = CreateConfiguration(connectionString).BuildSessionFactory();
+            _sessionFactory = CreateConfiguration(connectionStringProvider.ConnectionString).BuildSessionFactory();
         }
 
         public ISession Create()
         {
-            return _sessionFactory.OpenSession();
+            var session = _sessionFactory.OpenSession();
+
+            session.DefaultReadOnly = true;
+
+            return session;
         }
 
         public void Dispose()

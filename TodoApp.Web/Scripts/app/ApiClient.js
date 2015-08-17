@@ -16,7 +16,7 @@
         },
 
         post: function (url, data, success) {
-            doRequest("POST", url, data, success);
+            doRequest("POST", url, JSON.stringify(data), success);
         },
         
         'delete': function (url, success) {

@@ -6,7 +6,11 @@
         self.todos = ko.observableArray([]);
 
         self.createTodo = function() {
-            self.todos.push({ content: self.todoContent() });
+            var todo = { content: self.todoContent() };
+            
+            self.todos.push(todo);
+
+            apiClient.post('Todos', todo, function() {});
 
             self.todoContent("");
         };
