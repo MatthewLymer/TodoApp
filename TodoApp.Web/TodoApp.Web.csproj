@@ -124,10 +124,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\TodoApp.mdf" />
-    <Content Include="App_Data\TodoApp_log.ldf">
-      <DependentUpon>TodoApp.mdf</DependentUpon>
-    </Content>
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\ApiClient.js" />
     <Content Include="Scripts\app\require.config.js" />
@@ -160,9 +156,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account\Login.cs" />
-    <Compile Include="Models\MessageModel.cs" />
-    <Compile Include="Models\MessageBoardModel.cs" />
-    <Compile Include="Models\ParticipantModel.cs" />
     <Compile Include="Persistence\WebConfigConnectionStringProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -174,8 +167,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="packages.config" />
-    <Content Include="Views\Participant\Index.cshtml" />
-    <Content Include="Views\Shared\MessageBoard.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
