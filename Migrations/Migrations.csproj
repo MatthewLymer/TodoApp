@@ -12,6 +12,8 @@
     <Content Include="20150817235245_AddUserSeedData_up.sql" />
     <Content Include="20150817235444_AddTodoSeedData_down.sql" />
     <Content Include="20150817235444_AddTodoSeedData_up.sql" />
+    <Content Include="20150818231002_AddIsCompletedColumn_down.sql" />
+    <Content Include="20150818231002_AddIsCompletedColumn_up.sql" />
   </ItemGroup>
   <Target Name="DoNothing">
   </Target>

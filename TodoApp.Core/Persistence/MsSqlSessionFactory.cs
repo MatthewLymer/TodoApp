@@ -21,7 +21,7 @@ namespace TodoApp.Core.Persistence
         {
             var session = _sessionFactory.OpenSession();
 
-            session.DefaultReadOnly = true;
+            //session.DefaultReadOnly = true;
 
             return session;
         }

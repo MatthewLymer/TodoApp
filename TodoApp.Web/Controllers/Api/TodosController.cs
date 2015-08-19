@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Http;
 using TodoApp.Core.Entities;
 using TodoApp.Core.Repositories;
@@ -33,10 +34,28 @@ namespace TodoApp.Web.Controllers.Api
             return Created("", new PostTodoResponse{Id = todo.Id});
         }
 
+        public IHttpActionResult Put(Guid id, PutTodoRequest request)
+        {
+            var user = GetCurrentUser();
+
+            var todo = user.Todos.Single(x => x.Id == id);
+
+            todo.IsCompleted = request.IsCompleted;
+
+            _userRepository.Save(user);
+
+            return Ok();
+        }
+
         private User GetCurrentUser()
         {
             return _userRepository.GetByEmail(User.Identity.Name);
         }
+    }
+
+    public class PutTodoRequest
+    {
+        public bool IsCompleted { get; set; }
     }
 
     public class PostTodoRequest

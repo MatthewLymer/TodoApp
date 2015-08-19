@@ -14,22 +14,29 @@
             return undefined;
         }
 
-        this.get = function(controller, success) {
-            var response = findResponse('GET', controller);
+        this.get = function(url, success) {
+            var response = findResponse('GET', url);
             if (response) {
                 success(response.data);
             }
         };
 
-        this.post = function(controller, data, success) {
-            var response = findResponse('POST', controller, data);
+        this.post = function(url, data, success) {
+            var response = findResponse('POST', url, data);
+            if (response) {
+                success(response.data);
+            }
+        };
+        
+        this.put = function (url, data, success) {
+            var response = findResponse('PUT', url, data);
             if (response) {
                 success(response.data);
             }
         };
 
-        this.delete = function(controller, success) {
-            var response = findResponse('DELETE', controller);
+        this.delete = function(url, success) {
+            var response = findResponse('DELETE', url);
             if (response) {
                 success(response.data);
             }
@@ -41,6 +48,10 @@
 
         this.setupPost = function(predicate, data) {
             responses.push({ method: 'POST', predicate: predicate, data: data });
+        };
+        
+        this.setupPut = function (predicate, data) {
+            responses.push({ method: 'PUT', predicate: predicate, data: data });
         };
 
         this.setupDelete = function(pridicate, data) {

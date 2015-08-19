@@ -10,7 +10,7 @@
     <ul data-bind="foreach: todos, visible: todos().length > 0">
         <li>
             <label>
-                <input type="checkbox" />
+                <input type="checkbox" data-bind="checked: isCompleted" />
                 <span data-bind="text: content"></span>
             </label>
         </li>

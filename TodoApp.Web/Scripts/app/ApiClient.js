@@ -1,8 +1,8 @@
 ﻿define(['jquery', 'config'], function ($, config) {
-    function doRequest(method, controller, data, success) {
+    function doRequest(method, url, data, success) {
         $.ajax({
             type: method,
-            url: config.apiUrl + controller,
+            url: config.apiUrl + url,
             data: data,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -17,6 +17,10 @@
 
         post: function (url, data, success) {
             doRequest("POST", url, JSON.stringify(data), success);
+        },
+        
+        put: function (url, data, success) {
+            doRequest("PUT", url, JSON.stringify(data), success);
         },
         
         'delete': function (url, success) {

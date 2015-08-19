@@ -36,8 +36,8 @@ describe('TodoList View Model', function () {
         var content = "Mow the lawn";
         var posted = false;
 
-        var predicate = function(controller, data) {
-            var matches = controller == "Todos" && data.content == content;
+        var predicate = function(url, data) {
+            var matches = url == "Todos" && data.content == content;
 
             if (matches) {
                 posted = true;
@@ -71,10 +71,11 @@ describe('TodoList View Model', function () {
 
     it('should populate todos from model', function(done) {
         var todos = [
-            {}, {}, {}
+            { id: 1, content: 'hello', isCompleted: false },
+            { id: 2, content: 'world', isCompleted: true }
         ];
 
-        mockApiClient.setupGet(function (controller) { return controller == "Todos"; }, todos);
+        mockApiClient.setupGet(function (url) { return url == "Todos"; }, todos);
 
         var sut = new todoListViewModel();
 
@@ -83,11 +84,44 @@ describe('TodoList View Model', function () {
 
             expect(actualTodos.length).toBe(todos.length);
 
-            for (var i = 0; i < actualTodos.length; i++) {
-                expect(actualTodos[i]).toBe(todos[i]);
-            }
+            expect(actualTodos[0].id).toBe(todos[0].id);
+            expect(actualTodos[1].id).toBe(todos[1].id);
             
+            expect(actualTodos[0].content).toBe(todos[0].content);
+            expect(actualTodos[1].content).toBe(todos[1].content);
+            
+            expect(actualTodos[0].isCompleted()).toBe(todos[0].isCompleted);
+            expect(actualTodos[1].isCompleted()).toBe(todos[1].isCompleted);
+
             done();
+        });
+    });
+
+    cases('should mark todo as completed', [true, false], function (newState, done) {
+        var isPut = false;
+
+        var predicate = function (url, data) {
+            if (url == "Todos/abcd" && data.isCompleted === newState) {
+                isPut = true;
+                return true;
+            }
+
+            return false;
+        };
+
+        mockApiClient.setupGet(function (controller) { return controller == "Todos"; }, [{ id: 'abcd', isCompleted: !newState }]);
+        mockApiClient.setupPut(predicate, null);
+
+        var sut = new todoListViewModel();
+
+        setTimeout(function () {
+            var todo = sut.todos()[0];
+            todo.isCompleted(newState);
+            
+            setTimeout(function () {
+                expect(isPut).toBe(true);
+                done();
+            });
         });
     });
 });

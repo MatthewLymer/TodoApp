@@ -21,6 +21,8 @@ namespace TodoApp.Core.Persistence.Mapping
                 m.Column("Content");
                 m.NotNullable(true);
             });
+
+            Property(x => x.IsCompleted, m => m.Column("IsCompleted"));
         }
     }
 }
