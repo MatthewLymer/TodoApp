@@ -23,6 +23,8 @@ namespace TodoApp.Core.Persistence.Mapping
             });
 
             Property(x => x.IsCompleted, m => m.Column("IsCompleted"));
+
+            Property(x => x.DateCreated, m => m.Column("DateCreated"));
         }
     }
 }

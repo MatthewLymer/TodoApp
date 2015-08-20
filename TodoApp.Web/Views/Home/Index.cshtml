@@ -4,7 +4,7 @@
 
 <div id="todo-list">
     <form data-bind="submit: createTodo">
-        <input type="text" placeholder="Create todo..." data-bind="value: todoContent" />
+        <input type="text" placeholder="Create todo..." data-bind="textInput: todoContent" />
     </form>
     
     <ul data-bind="foreach: todos, visible: todos().length > 0">

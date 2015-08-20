@@ -3,7 +3,7 @@
         var self = this;
         self.id = data.id;
         self.content = data.content;
-        self.isCompleted = ko.observable(data.isCompleted);
+        self.isCompleted = ko.observable(data.isCompleted || false);
 
         self.isCompleted.subscribe(function (newValue) {
             apiClient.put('Todos/' + self.id, { isCompleted: newValue }, function() {});
@@ -16,7 +16,7 @@
         self.todoContent = ko.observable();
         self.todos = ko.observableArray([]);
 
-        self.createTodo = function() {
+        self.createTodo = function () {
             var todo = new todoViewModel({ content: self.todoContent() });
             
             self.todos.push(todo);

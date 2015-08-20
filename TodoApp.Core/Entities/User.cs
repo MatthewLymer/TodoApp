@@ -39,7 +39,9 @@ namespace TodoApp.Core.Entities
         {
             var todo = new Todo(Guid.NewGuid()) 
             {
-                Content = content
+                Content = content,
+                IsCompleted = false,
+                DateCreated = DateTime.UtcNow
             };
 
             _todos.Add(todo);

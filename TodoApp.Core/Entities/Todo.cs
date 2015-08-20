@@ -19,5 +19,6 @@ namespace TodoApp.Core.Entities
         public virtual Guid Id { get { return _id; } }
         public virtual string Content { get; set; }
         public virtual bool IsCompleted { get; set; }
+        public virtual DateTime DateCreated { get; set; }
     }
 }

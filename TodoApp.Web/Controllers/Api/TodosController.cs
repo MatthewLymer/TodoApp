@@ -20,7 +20,15 @@ namespace TodoApp.Web.Controllers.Api
         {
             var user = GetCurrentUser();
 
-            return Ok(user.Todos);
+            var data = user.Todos
+                .OrderBy(x => x.DateCreated)
+                .Select(x => new GetTodoResponse {
+                    Id = x.Id,
+                    Content = x.Content,
+                    IsCompleted = x.IsCompleted
+                });
+
+            return Ok(data);
         }
 
         public IHttpActionResult Post(PostTodoRequest request)
@@ -51,6 +59,13 @@ namespace TodoApp.Web.Controllers.Api
         {
             return _userRepository.GetByEmail(User.Identity.Name);
         }
+    }
+
+    public class GetTodoResponse
+    {
+        public Guid Id { get; set; }
+        public string Content { get; set; }
+        public bool IsCompleted { get; set; }
     }
 
     public class PutTodoRequest

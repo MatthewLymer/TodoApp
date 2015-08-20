@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Web.Mvc;
 using System.Web.Security;
+using TodoApp.Core.Repositories;
 
 namespace TodoApp.Web
 {
@@ -39,8 +41,14 @@ namespace TodoApp.Web
 
         public override bool ValidateUser(string username, string password)
         {
-            return username.Equals("smcqueen@domain.com", StringComparison.OrdinalIgnoreCase) &&
-                   password.Equals("qwerty", StringComparison.OrdinalIgnoreCase);
+            if (password != "qwerty")
+            {
+                return false;
+            }
+
+            var userRepository = (IUserRepository) DependencyResolver.Current.GetService(typeof (IUserRepository));
+
+            return userRepository.GetByEmail(username) != null;
         }
 
         public override bool UnlockUser(string userName)

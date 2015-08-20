@@ -29,24 +29,20 @@ describe('TodoList View Model', function () {
         sut.todoContent(content);
         sut.createTodo();
 
-        expect(sut.todos()[0].content).toBe(content);
+        var todos = sut.todos();
+        expect(todos.length).toBe(1);
+
+        var todo = todos[0];
+        expect(todo.content).toBe(content);
+        expect(todo.isCompleted()).toBe(false);
+        expect(todo.id).toBeUndefined();
     });
     
-    it('should persist created todo to model', function(done) {
+    it('should get todo id from server when added', function(done) {
         var content = "Mow the lawn";
-        var posted = false;
-
-        var predicate = function(url, data) {
-            var matches = url == "Todos" && data.content == content;
-
-            if (matches) {
-                posted = true;
-            }
-            
-            return matches;
-        };
-
-        mockApiClient.setupPost(predicate, null);
+        var todoId = 'abcd';
+        
+        mockApiClient.setupPost(function(url, data) { return url == "Todos" && data.content == content;}, {id:todoId});
 
         var sut = new todoListViewModel();
 
@@ -55,7 +51,7 @@ describe('TodoList View Model', function () {
         sut.createTodo();
 
         setTimeout(function () {
-            expect(posted).toBe(true);
+            expect(sut.todos()[0].id).toBe(todoId);
             done();
         });
     });
