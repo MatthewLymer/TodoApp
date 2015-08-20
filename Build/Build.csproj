@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="DoNothing" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{69E1287A-5328-4DC8-9EA7-184FC0031252}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="build-default.ps1" />
+    <Content Include="Build.csproj" />
+    <Content Include="default.ps1" />
+    <Content Include="nunit\framework\nunit.framework.dll" />
+    <Content Include="nunit\framework\nunit.framework.xml" />
+    <Content Include="nunit\framework\nunit.mocks.dll" />
+    <Content Include="nunit\lib\nunit-console-runner.dll" />
+    <Content Include="nunit\lib\nunit.core.dll" />
+    <Content Include="nunit\lib\nunit.core.interfaces.dll" />
+    <Content Include="nunit\lib\nunit.util.dll" />
+    <Content Include="nunit\nunit-agent.exe" />
+    <Content Include="nunit\nunit-agent.exe.config" />
+    <Content Include="nunit\nunit-console.exe" />
+    <Content Include="nunit\nunit-console.exe.config" />
+    <Content Include="psake\en-US\psake.psm1-help.xml" />
+    <Content Include="psake\psake.psm1" />
+  </ItemGroup>
+  <Target Name="DoNothing">
+  </Target>
+</Project>
