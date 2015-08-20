@@ -1,6 +1,11 @@
 # TodoApp
 An example Todo application demonstrating several technologies
 
+## To build
+Navigate to `.\Build` in PowerShell and execute the following command:
+
+    `.\build-default.ps1`
+
 ## Projects used
 
 ### KnockoutJS
