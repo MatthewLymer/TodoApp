@@ -4,18 +4,18 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    
+
     <script src="~/Scripts/lib/require-2.1.20.min.js"></script>
     <script src="~/Scripts/app/require.config.js"></script>
     
     <script>
-        require.config({            
-           baseUrl: '/Scripts' 
-        });
+    require.config({
+        baseUrl: '@(Request.ApplicationPath.TrimEnd('/'))/Scripts'
+    });
 
-        define('config', {
-            apiUrl: '@Request.Url.GetLeftPart(UriPartial.Authority)/api/'
-        });
+    define('config', {
+        apiUrl: '@(Request.ApplicationPath.TrimEnd('/'))/api/'
+    });
     </script>
 </head>
     <body>
