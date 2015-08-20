@@ -37,6 +37,17 @@ describe('TodoList View Model', function () {
         expect(todo.isCompleted()).toBe(false);
         expect(todo.id).toBeUndefined();
     });
+
+    xit('should not add todo if no content is provided', function() {
+        var content = "";
+        
+        var sut = new todoListViewModel();
+
+        sut.todoContent(content);
+        sut.createTodo();
+
+        expect(sut.todos().length).toBe(0);
+    });
     
     it('should get todo id from server when added', function(done) {
         var content = "Mow the lawn";

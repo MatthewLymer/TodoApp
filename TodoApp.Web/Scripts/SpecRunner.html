@@ -10,7 +10,14 @@
         <script src="lib/jasmine-2.3.4/jasmine.js"></script>
         <script src="lib/jasmine-2.3.4/jasmine-html.js"></script>
         <script src="lib/jasmine-2.3.4/boot.js"></script>
+        <script src="tests/JasmineConsoleReporter.js"></script>
         
+        <script>
+            //if (/phantomjs/i.exec(navigator.userAgent)) {
+                jasmine.getEnv().addReporter(new JasmineConsoleReporter());
+            //}
+        </script>
+
         <script src="lib/require-2.1.20.min.js"></script>
         <script src="app/require.config.js"></script>
         <script src="tests/RequireExtensions.js"></script>

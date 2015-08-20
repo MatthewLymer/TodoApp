@@ -9,6 +9,10 @@
     <script src="~/Scripts/app/require.config.js"></script>
     
     <script>
+        require.config({            
+           baseUrl: '/Scripts' 
+        });
+
         define('config', {
             apiUrl: '@Request.Url.GetLeftPart(UriPartial.Authority)/api/'
         });

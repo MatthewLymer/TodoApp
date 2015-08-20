@@ -4,16 +4,7 @@
     <ProjectGuid>{92DC5F8F-DA3E-495C-9E5D-55FCF1BDE4C4}</ProjectGuid>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="20150817234539_CreateTableUsers_down.sql" />
-    <Content Include="20150817234539_CreateTableUsers_up.sql" />
-    <Content Include="20150817234739_CreateTableTodos_down.sql" />
-    <Content Include="20150817234739_CreateTableTodos_up.sql" />
-    <Content Include="20150817235245_AddUserSeedData_down.sql" />
-    <Content Include="20150817235245_AddUserSeedData_up.sql" />
-    <Content Include="20150817235444_AddTodoSeedData_down.sql" />
-    <Content Include="20150817235444_AddTodoSeedData_up.sql" />
-    <Content Include="20150818231002_AddIsCompletedColumn_down.sql" />
-    <Content Include="20150818231002_AddIsCompletedColumn_up.sql" />
+    <Content Include="**" />
   </ItemGroup>
   <Target Name="DoNothing">
   </Target>

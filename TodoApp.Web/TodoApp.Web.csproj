@@ -139,6 +139,7 @@
     <Content Include="Scripts\lib\require-2.1.20.js" />
     <Content Include="Scripts\lib\require-2.1.20.min.js" />
     <Content Include="Scripts\SpecRunner.html" />
+    <Content Include="Scripts\tests\JasmineConsoleReporter.js" />
     <Content Include="Scripts\tests\MockApiClient.js" />
     <Content Include="Scripts\tests\RequireExtensions.js" />
     <Content Include="Scripts\tests\TodoListViewModelTests.js" />
@@ -181,7 +182,7 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v12.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
