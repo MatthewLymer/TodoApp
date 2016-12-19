@@ -38,7 +38,7 @@ function Build-WebProject($projectName) {
 			/p:Configuration=$configuration `
 			/p:WebPublishMethod=FileSystem `
 			/p:PublishUrl=$outDir `
-			/p:VisualStudioVersion=12.0
+			/p:VisualStudioVersion=14.0
 	}
 }
 
